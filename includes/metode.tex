@@ -1,0 +1,10 @@
+\subsection{Forberedelse av lydfil for analyse}
+For å kunne ta i bruk den numeriske løsningen av bølgeligningen, må lydfilen først forberedes. Dette gjøres ved å lese inn lydfilen 
+og konvertere den til et format som kan brukes i den numeriske modellen. I dette prosjektet benyttes Python-biblioteket 
+\verb|scipy.io.wavfile| for å lese inn lydfilene i WAV-format. Vi har valgt å bruke en avgrenset del av lydfilen for å redusere kompleksiteten
+i analysen og fokusere på de mest relevante delene av signalet. Dette lar oss også identifisere enkelte toner med STFT-analyse og forhåpentligvis kunne
+identifisere instrumentene som produserer disse tonene.
+
+Når det gjelder samplingsrate, brukte vi den standard samplingsraten på 44100 Hz for lydfilen. Dette er en vanlig samplingsrate for 
+lydfiler og gir en god balanse mellom lydkvalitet og filstørrelse. Dette gir en analyserekkevidde opp til 22050 Hz, i henhold til Nyquist-teoremet.
+Det også viktig å velge en høy nok samplingsrate for å sikre at de høyeste frekvensene i lydsignalet blir korrekt representert, hvis ikke kan aliasing oppstå.
