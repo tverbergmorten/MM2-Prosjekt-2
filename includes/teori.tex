@@ -49,15 +49,6 @@ I lydanalyse betyr dette at et periodisk signal, for eksempel en tone fra \texti
 kan beskrives som en kombinasjon av en grunnfrekvens og dens harmoniske overtoner. Grunnfrekvensen bestemmer tonehøyden, 
 mens overtonene påvirker klangfargen og gir lyden dens karakteristiske uttrykk.
 
-
-\subsubsection{Fouriertransformasjon}
-Fouriertransformasjonen er en matematisk metode som brukes til å analysere 
-signaler ved å dekomponere dem i deres grunnleggende frekvenskomponenter. 
-Den omformer et signal fra tidsdomenet til frekvensdomenet, slik at vi kan 
-identifisere hvor mye av hver frekvens som er til stede i signalet. Dette er 
-nyttig for blant annet lydanalyse, filtrering og støydemping
-
-
 \subsubsection{Fouriertransformasjon for vinkel­frekvens}
 I mange sammenhenger uttrykkes Fouriertransformasjonen i form av \emph{vinkelfrekvens}~$\omega$ i stedet for den lineære frekvensen~$f$. Sammenhengen mellom de to er gitt ved
 
@@ -77,8 +68,8 @@ og den inverse transformasjonen som
 Denne formen brukes ofte i teoretiske analyser og i kontinuerlige modeller, mens frekvensformen~$F(f)$ oftere brukes i praktiske anvendelser, som lyd- og signalanalyse.
 
 
-\subsection{Diskre Fouriertransformasjon (DFT)}
-Den \emph{diskrete Fouriertransformasjonen (DFT)} brukes når signalet består av et endelig antall diskrete verdier. Dette er den formen som benyttes i digital signalbehandling, ettersom analoge signaler må samles inn som prøver (samples) for å kunne analyseres på datamaskin.
+\subsection{Diskret Fouriertransformasjon (DFT)}
+Den \emph{diskret Fouriertransformasjonen (DFT)} brukes når signalet består av et endelig antall diskret verdier. Dette er den formen som benyttes i digital signalbehandling, ettersom analoge signaler må samles inn som prøver (samples) for å kunne analyseres på datamaskin.
 
 DFT-en defineres som
 
@@ -93,7 +84,7 @@ hvor~$x[n]$ er signalet i tidsdomenet og~$X[k]$ er dets representasjon i frekven
 der~$f_s$ er samplingsfrekvensen. DFT gjør det mulig å analysere hvor mye energi som finnes i bestemte frekvensbånd i et digitalt signal, for eksempel hvilke frekvenser som dominerer i en musikktone.
 
 \subsubsection{Fast Fourier Transform (FFT)}
-Selv om den diskrete Fouriertransformasjonen (DFT) er konseptuelt enkel, er den beregningsmessig krevende. 
+Selv om den diskret Fouriertransformasjonen (DFT) er konseptuelt enkel, er den beregningsmessig krevende. 
 En direkte DFT-beregning krever $N^2$ multiplikasjoner, der $N$ er antall datapunkter. 
 For små signaler er dette uproblematisk, men for større datamengder øker tiden raskt, og det blir upraktisk å analysere signaler i sanntid. 
 
@@ -146,27 +137,31 @@ Dette gir en visuell fremstilling av hvordan ulike toner og instrumenter opptrer
 noe som ikke er mulig å se direkte fra en vanlig Fouriertransformasjon.
 
 \subsubsection{Diskret STFT}
-Den \emph{diskrete korttids Fouriertransformasjonen} (DSTFT) brukes når signalet er digitalt representert som en rekke diskrete målepunkter. 
+Den \emph{diskret korttids Fouriertransformasjonen} (DSTFT) brukes når signalet er digitalt representert som en rekke diskret målepunkter. 
 I praksis deles signalet inn i overlappende segmenter, og for hvert segment utføres en diskret Fouriertransformasjon (DFT eller FFT). 
 Dette gir et todimensjonalt resultat som viser hvordan frekvensinnholdet endrer seg over tid.
 
-Den diskrete STFT kan uttrykkes som
+Den diskret STFT kan uttrykkes som
 
 \begin{equation*}
     X(m, k) = \sum_{n=0}^{N-1} x[n + mH] \, w[n] \, e^{-j2\pi kn/N}
 \end{equation*}
 
-hvor $x[n]$ er det diskrete signalet, $w[n]$ er vindusfunksjonen, $N$ er antall punkter per vindu, og $H$ er hopplengden (antall prøver mellom hvert vindu). 
+hvor $x[n]$ er det diskret signalet, $w[n]$ er vindusfunksjonen, $N$ er antall punkter per vindu, og $H$ er hopplengden (antall prøver mellom hvert vindu). 
 Ved å bruke en FFT-algoritme for hver vindusposisjon reduseres beregningstiden betydelig sammenlignet med direkte DFT-beregninger.
 
 Resultatet av en diskret STFT visualiseres ofte som et \emph{spektrogram}, der man tydelig ser endringer i tonehøyde, rytme og harmonisk struktur over tid. 
 I vår oppgave brukes denne metoden til å analysere lydklippet fra \textit{Seven Nation Army}, der den karakteristiske basslinjen kan observeres som tydelige 
 bånd i området mellom omtrent 55 og 110~Hz. Denne fremstillingen gir et mer detaljert bilde av musikkens struktur enn den vanlige Fouriertransformasjonen.
 
-
+\begin{figure}[h]
+    \includegraphics[width=\textwidth]{figurer/Seven Nation Army Spektogram.png}
+    \label{fig:spektogram1}
+    \caption{Spektogram}
+\end{figure}
 
 \subsection{Sammenhengen mellom DFT, FFT og STFT}
-Den diskrete Fouriertransformasjonen (DFT), Fast Fourier Transform (FFT) og Short-time Fourier Transform (STFT) er alle metoder for frekvensanalyse av signaler, 
+Den diskret Fouriertransformasjonen (DFT), Fast Fourier Transform (FFT) og Short-time Fourier Transform (STFT) er alle metoder for frekvensanalyse av signaler, 
 men de brukes i forskjellige sammenhenger og har ulike egenskaper. Hovedforskjellen ligger i hvordan de behandler tidsinformasjon og beregningseffektivitet.
 
 DFT er den grunnleggende metoden for å analysere frekvensinnholdet i et diskret signal. Den beregner frekvenskomponentene for hele signalet som en helhet, uten

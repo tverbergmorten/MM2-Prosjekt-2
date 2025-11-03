@@ -8,3 +8,37 @@ identifisere instrumentene som produserer disse tonene.
 Når det gjelder samplingsrate, brukte vi den standard samplingsraten på 44100 Hz for lydfilen. Dette er en vanlig samplingsrate for 
 lydfiler og gir en god balanse mellom lydkvalitet og filstørrelse. Dette gir en analyserekkevidde opp til 22050 Hz, i henhold til Nyquist-teoremet.
 Det også viktig å velge en høy nok samplingsrate for å sikre at de høyeste frekvensene i lydsignalet blir korrekt representert, hvis ikke kan aliasing oppstå.
+
+\subsection{Analyseringsprogram i python}
+
+I dette delkapittelet beskrives koden for å fouriertransformere en sangfil, med fft. Koden kan hentes her: 
+\parencite{python_fft_analyse} 
+
+For å analysere lydsignalet til en sang, har programmeringsspråket python blitt brukt, da med
+pakkene \texttt{numpy}, \texttt{matplotlib}, og \texttt{scipy}for å animere og plotte grafen. 
+Pakkene \texttt{subprocess}, \texttt{progressbar}, og \texttt{argparse} har blitt brukt for 
+å kjøre eksterne programmer, se status på rendering av animasjon og hente inn kommandolinjeargumenter når
+programmet blir kjørt. 
+
+\subsubsection{Animasjonsfunksjonen}
+
+Først brukes \texttt{scipy} biblioteket sin funksjon \texttt{wavfile.read} for å lese av input filen.
+Denne returnerer \texttt{sampleRate}, som er hvor mange ganger per sekund den analoge bølgen for 
+sangen har blitt målt. Det andre funksjonen returnerer er \texttt{wav}, som er array fra 
+\texttt{numpy} biblioteket. Denne arrayen består av alle samplingene til sangen. Deretter blir
+lengden på arrayen lest av for å finne ut hvor mange samplinger det er i sangen. 
+
+Ettersom samples i en wav fil kan bli enten lagret som \texttt{float} (desimaltall) fra 
+$[-1.0 , 1.0]$ eller \texttt{int16} (16 bit integer) fra $[-32768 , 32768]$, brukes det
+en \texttt{if}-sjekk for å sørge for at det kun er desimaltall innenfor $[-32768 , 32768]$ 
+som brukes for å tegne på grafen. Deretter blir wav-arrayen sjekket for om det er en eller 
+to kanaler. Dersom det er to kanaler, blir kanalene lagt sammen til en kanal for å få med seg
+alle frekvensene uten å måtte fouriertransformere hver kanal for seg. 
+
+Deretter kommer seksjonen i koden der viktige variabler blir satt. Først defineres \texttt{spf} eller \textit{samples per frame}, 
+, som er antall samplinger mer bilde som renderes i animasjonen. Deretter defineres $T = 1.0 / sampleRate$, som er 
+hvor lang tid det er mellom hver sample i wav-filen. Antall samples per fouriertransformasjon defineres av 
+$N = max(2, fftTime \cdot sampleRate)$, der $fftTime$ er ett av funksjonsargumentene, som definerer
+hvor langt tidsintervall som skal fouriertransformeres om gangen. 
+
+
