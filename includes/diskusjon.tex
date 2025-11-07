@@ -3,14 +3,34 @@
 % Innled kort: hensikten med diskusjonen, hvordan resultatene skal vurderes og settes i kontekst
 
 \subsection{Tolkning av resultatene}
+Hensikten med dette kapittelet er å drøfte resultatene fra frekvensanalysen, og sette de i sammenheng med teorien om
+Fourier-transfomasjoner. Målet er å vurdere hvor godt de praktiske funnene samsvarer med de teoretiske forventningene, samt
+belyse metodens styrker, begrensninger og mulig forbedringer.
 % Overordnet drøfting av hva resultatene viser og hva de betyr i sammenheng med teorien
 
 \subsubsection{Identifiserte frekvenser}
+Resultatene fra frekvensanalysen viser tydelige bånd i området mellom omtrent 55 og 110 Hz, som tilsvarer basslinjen i Seven
+Nation Army. Dette stemmer godt overens med forventede verdier for tonene i sangens karakteristiske riff. De lavfrekvente
+komponentene dominerer store deler av spektrogrammet, noe som indikerer at bassgitaren har en sentral rolle i lydsignalet.
+
+I tillegg ble flere høyere harmoniske komponenter observert, spesielt i områdene rundt 200-400 Hz og 800-1000 Hz. Disse
+representerer overtoner og resonanser som oppstår naturlig når strengen vibrerer, samt bidrag fra andre instrumenter og vokal.
+De høyfrekvente toppene som forekommer sporadisk i spektrogrammet, kan tilskrives slagverk og transienter fra trommeslag eller
+perkusjon.
 % Diskuter hvilke frekvenser som dominerer i analysen
 % Forklar hvordan disse stemmer med forventede verdier fra basslinjen
 % Kommenter på harmoniske komponenter og hvordan de opptrer i spekteret
 
 \subsubsection{Tidsvariasjon i STFT}
+STFT-resultatet gir et tydelig bilde av hvordan frekvensinnholdet i sangen endrer seg over tid. De første sekundene av sangen 
+viser stabile lavfrekvente komponenter uten store endringer, noe som samsvarer med introen hvor basslinjen går alene. Etter 
+hvert som flere instrumenter legges til, blir spektrogrammet tettere og mer komplekst, med økt energi i mellom- og 
+høyfrekvensområdet, noe som antyder at flere instumenter blir med i lydbildet.
+
+
+Mot slutten av klippet kan man se tydelige variasjoner i amplitude og intensitet, som viser hvordan energien i signalet 
+varierer i takt med rytmen og instrumenteringen. STFT-analysen bekrefter dermed at metoden effektivt fanger opp både harmoniske
+og rytmiske endringer i musikken.
 % Forklar hvordan STFT viser endringer i frekvens over tid
 % Diskuter rytmikk, slag og transienter synlig i spektrogrammet
 % Knytt dette til hvordan Fourier-transformasjon fanger dynamiske signaler
@@ -21,10 +41,34 @@
 % Sammenlign teoretiske prinsipper (DFT, FFT, STFT) med de praktiske resultatene fra analysen
 
 \subsubsection{Forventede vs. observerte mønstre}
+De observerte mønstrene i spektrogrammet samsvarer i stor grad med de teoretiske forventningene. Som forventet gir stabile,
+periodiske singnaler, for eksempel basslinjen, vedvarende tydlige horisontalbånd, mens raske transienter og slag gir vertikale
+mønstre. Dette stemmer overens med teorien om at korte tidsvariasjoner krever bredere frekvensbånd, mens stabile toner gir 
+smalere og mer konsentrerte frekvenskomponenter.
+
+
+Det var en forventning om å kunne identifisere flere intrumenter, men dette er ikke noe som en kunne tydlig observere i 
+resultatene. Dette kan skyldes av at mange intrumenter har et lydbilde bestående av mange ulike overtoner og kan dermed være 
+vanskelig å skille fra hverandre under analysen.
+Små avvik mellom forventet og faktiske resultater kan dermed skyldes av instrumentene eller effekter i lydproduksjonen. Dette 
+lager støy i analysen, men en ser likevel et presist bilde av signalets struktur, samt identifisere enkelte instrumenter ved 
+STFT og FFT.
 % Sammenlign teoretisk forventet spektrum med faktisk FFT-resultat
 % Diskuter mulige årsaker til avvik (aliasing, vinduvalg, sampling)
 
 \subsubsection{Effekten av vindustype og parametere}
+Valg av vindu har stor betydning for tids- og frekvensoppløsning, samt på resultatet både i leslighet og nøyaktighet. Dermed har det blitt
+benyttet Hann-vindu, ettersom denne metoden legger til rette for god balanse mellom tids- og frekvensoppløsningen som passer
+til formålet. Samtidig er Hann-vindu god for å redusere spektrallekkasje noe som fører til renere resultater, og er mer 
+hensiktsmessig for analyse hvor det er sammensetting av mange u-rene lyder. Et rektangulært vindu ville gitt skarpere 
+frekvensoppløsning, men på bekostning av større grad av spektrallekkasje og er derfor ikke like hensiktsmessig.
+
+Hoplengden og FFT-størrelsen påvirker også resultatet. Kortere hoplengde gir bedre tidsoppløsning, men øker beregningstid. 
+Større FFT gir bedre frekvenspresisjon, men lavere tidsoppløsning. Dette illustrerer sammenhengen mellom tid og frekvens som er 
+beskrevet i teorien. Det ble først valgt FFT størrelse slik at en målte til og med 22050Hz med en Hoplengde på 100ms. Da med slike 
+instillinger blir det oppnådd et kompromi hvor en tydelig ser de mest rellevante frekvensenr, men for å få fram resultatene mer tydlig ble det
+begrenset et ommrådet til mellom 0Hz og 5000Hz. Ved å gjøre dette blir noe av målingene av overtoner unngått, men får i gjenjeld mye 
+klarere resultater på de mest fremtredene frekvensene. 
 % Drøft hvordan valg av vindu (Hann, Hamming) påvirket oppløsningen
 % Kommenter kompromisset mellom tids- og frekvenspresisjon
 
@@ -34,9 +78,12 @@
 % Drøft svakheter i metode, datainnsamling eller beregning
 
 \subsubsection{Numeriske og tekniske begrensninger}
+Selv om FFT og STFT gir gode resultater, finnes det fortsatt numeriske og tekniske begrensninger i løsningen som er blitt har valgt. Flyttallsavrunding og presisjonberegninger i Python kan gi små avvik i beregningene, særlig for lange signaler eller lave amplitude-komponenter. Likevell regnes det med at dette ikke vil være en betydlig feilkilde for hensikten. 
+FFT-størrelse og hoplengde påvirker hvordand tid og frekvens prioriteres, og er alltid et kompromiss som kan føre til uskarpheter i beregningene. 
 % Beskriv hvordan Python-implementasjon, FFT-størrelse og samplingsrate kan påvirke nøyaktighet
 
 \subsubsection{Usikkerhet i lyddata}
+Lydfilens kvalitet og egenskaper kan også påvirke analysen. Komprimering, støy eller romklang under opptak kan indusere støykomponenter som ikke komer fra intrumentene selv. Sterio til mono konvertering kan også føre til tap av faseinformasjon, og instrumenter med mange overtoner kan være vansklige å skille tydlig. Disse faktorene påvirker serlig sekundære detaljer og svake overtoner, men hovedfrekvensene og rytmemønsterene vil fortsatt fremstå tydelig, og vil derfor fortsatt være tilstrekkelig for analysens konklusjoner.
 % Diskuter potensielle feilkilder fra selve lydfilen (komprimering, støy, stereo–>mono-konvertering)
 % Kommenter hvordan disse kan påvirke analysen
 
@@ -46,12 +93,15 @@
 % Sett analysen i en større kontekst og foreslå videre forskning
 
 \subsubsection{Praktisk anvendelse}
+Fourier-transformasjoner er et kraftig verktøy som brukes i en rekke reelle systemer. Innen signalbehandling er de essensielle for å analysere og filtrere lydsignaler, som vist i denne analysen av musikk. I musikkteknologi brukes Fourier-analyser for å forstå frekvensspekteret til instrumenter, forbedre lydkvalitet og utvikle effekter som equalizere og reverb. Innen telematikk benyttes Fourier-transformasjoner for å komprimere data, redusere støy og forbedre signaloverføring. Fourier-metoder er også grunnlaget for moderne kommunikasjonsprotokoller, som OFDM brukt i Wi-Fi og 4G/5G-nettverk, og er dermed svært relevante for cyberingeniører og sambandsanalytikere. 
 % Forklar hvordan Fourier-transformasjoner brukes i reelle systemer (signalbehandling, musikkteknologi, telematikk)
 % Relater gjerne til fagfeltet ditt (cyberingeniør / sambandsanalyse)
 
 \subsubsection{Forslag til videre arbeid}
+Denne analysen kan utvides på flere måter for å forbedre nøyaktigheten og anvendeligheten av resultatene. En mulig retning er å implementere Wavelet-transformasjoner, som kan gi bedre tids-frekvensoppløsning for ikke-stasjonære signaler som musikk. Dette kan bidra til å fange opp raske transienter og dynamiske endringer mer effektivt enn STFT. Videre kan en dypere musikkanalyse utforskes, inkludert identifikasjon av individuelle instrumenter og deres bidrag til det samlede lydbildet. Dette kan innebære bruk av maskinlæringsteknikker for å klassifisere og separere lydkilder basert på deres frekvenskarakteristikker, ettersom det kan vise seg å være problematisk å gjøre dette med høy nøyaktighet uten hjelpeverktøy. 
 % Foreslå utvidelser: f.eks. Wavelet-transformasjon, dypere musikkanalyse, sanntidsimplementasjon
 % Reflekter kort over hvordan prosjektet kan forbedres
 
 % Kort avsluttende avsnitt uten undertittel:
 % Oppsummer hovedpoengene fra diskusjonen og legg opp til konklusjonskapittelet
+

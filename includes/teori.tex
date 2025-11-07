@@ -2,7 +2,7 @@
 
 Fouriertransformasjonen er en matematisk metode som brukes til å analysere 
 signaler ved å dekomponere dem i deres grunnleggende frekvenskomponenter. 
-Den omformer et signal fra tidsdomenet til frekvensdomenet, slik at vi kan 
+Den omformer et signal fra tidsdomenet til frekvensdomenet, slik at en kan 
 identifisere hvor mye av hver frekvens som er til stede i signalet. Dette er 
 nyttig for blant annet lydanalyse, filtrering og støydemping \parencite{geeksforgeeks_fourier}.
 
@@ -91,7 +91,7 @@ For små signaler er dette uproblematisk, men for større datamengder øker tide
 Fast Fourier Transform (FFT) er en algoritme som utnytter symmetrier i DFT-formelen for å redusere antall nødvendige beregninger fra $N^2$ til $N\log_2 N$. 
 Denne forbedringen gjør FFT i stand til å behandle store signaler tusenvis av ganger raskere enn en direkte DFT, uten at resultatet endres.
 
-Anta at vi ønsker å beregne frekvensinnholdet til et signal med $N=1\,000\,000$ datapunkter.
+Anta at det ønskes å beregne frekvensinnholdet til et signal med $N=1\,000\,000$ datapunkter.
 
 \begin{itemize}
     \item Med DFT kreves det omtrent $N^2 = 10^{12}$ multiplikasjoner.
@@ -244,3 +244,28 @@ Figuren ovenfor viser de vanligste vindustypene brukt ved frekvensanalyse. Den h
 prøver (tidsakse) innenfor et vindu, mens den vertikale aksen viser amplituden som signalet vektlegges med. Et rektangulært 
 vindu (blå) beholder full amplitude gjennom hele vinduet, mens Hann-, Hamming- og Blackman-vinduene gradvis demper signalet 
 mot kantene. Dette reduserer spektrallekkasje i Fourier-transformasjonen, men på bekostning av noe lavere frekvensoppløsning.
+
+\subsection{Energi i signalet}
+
+For et kontinuerlig audiosignal i tidsdomenet er energien til signalet bestemt av integrasjonen av det kvadrerte signalet mellom 
+negativ og positiv uendelig. For et diskret tidssignalet blir det summen av det kvadrerte signalet fra negativ til
+positiv uendelig. Den spektrale energien kan bestemmes for ulike frekvenser i signalet. Den spektrale energie for 
+frekvens $f$ blir den fouriertransformerte høyden på grafen ved $f$ kvadrert. \parencite{wikipedia_energi_fft}
+
+Energi for kontinuerlig tidssignal $s(t)$:
+
+\begin{equation*}
+	E_s = \int_{-\infty}^{\infty} |s(t)|^2\,dt
+\end{equation*}
+
+Energi for diskret tidssignal $s(t)$:
+
+\begin{equation*}
+	E_s = \sum_{n=-\infty}^{\infty} |s(t)|^2
+\end{equation*}
+
+Spektralenergien for $S(f)$, den fouriertransformerte av $s(t)$:
+
+\begin{equation*}
+	E_s(f) = |X(f)|^2
+\end{equation*}

@@ -3,20 +3,46 @@
 % Kort introduksjon til temaet og prosjektets kontekst
 
 \subsection{Bakgrunn og målsetting}
-% Forklar hvorfor temaet er relevant og hva som undersøkes
-I dette prosjektet analyseres et lydklipp fra sangen “Seven Nation Army” av The White Stripes. 
-Sangen er valgt fordi den har et tydelig og repeterende bassmotiv med lave frekvenser, 
-som gjør den spesielt egnet for analyse ved hjelp av Fourier-transformasjoner. 
-De stabile tonene i basslinjen gjør det mulig å undersøke frekvenspresisjon, 
-mens trommerytmen gir naturlige tidsvariasjoner som er interessante for Short-Time Fourier Transform (STFT).
+
+I dette prosjektet analyseres lydklippet fra sangen Seven Nation Army av The White Stripes
+ ved hjelp av Fourier-transformasjon. Sangen er valgt for sin distinkte basslinje med lave frekvenser, 
+ som gir et ideelt utgangspunkt for å utforske Fourier-transformasjonens anvendelse på musikk. Metoden 
+ lar oss analysere signaler ved å dekomponere dem i deres grunnleggende frekvenskomponenter, og gir 
+ innsikt i hvordan disse komponentene varierer over tid, noe som er spesielt relevant for musikk som 
+ inneholder både stabile og rytmiske elementer.
+
+Formålet med prosjektet er å utforske hvordan Fourier-transformasjon, både i form av Fast Fourier Transform (FFT) 
+og Short-Time Fourier Transform (STFT), kan brukes til å identifisere og visualisere de dominerende 
+frekvenskomponentene i en musikalsk sekvens. Det vil bli undersøkt hvordan forskjellige metoder for 
+frekvensanalyse kan avsløre informasjon om de harmoniske komponentene i et musikkstykke, og hvordan tidsvariasjonene 
+i signalet kan fanges opp av STFT.
+
+Målet er å belyse hvordan disse metodene kan brukes for å forstå og analysere musikk på et dypere nivå, 
+ved å gi et visuelt innblikk i signalets struktur, rytme og frekvensinnhold.
+
+Rapporten er strukturert på følgende måte: Den begynner med en teoretisk gjennomgang av Fourier-transformasjonen og 
+relaterte teknikker som DFT, FFT og STFT. Deretter presenteres den praktiske metoden for å forberede lydfilen og 
+gjennomføre analysen, før resultatene diskuteres. Til slutt avsluttes rapporten med en vurdering av metodens 
+effektivitet og forslag til videre arbeid.
 
 \subsubsection{Motivasjon}
 % Hvorfor prosjektet er interessant eller viktig
+Prosjektet er motivert av ønsket om å forstå hvordan matematiske metoder kan anvendes på praktiske, virkelige signaler 
+— i dette tilfellet musikk. Fourier-transformasjonen utgjør en sentral del av moderne signalbehandling, og brukes i alt 
+fra lyd- og bildeanalyse til kommunikasjon og radar. Ved å anvende transformasjonen på et kjent og rytmisk musikalsk signal 
+som \textit{Seven Nation Army}, blir det mulig å knytte abstrakte matematiske prinsipper til et konkret og gjenkjennelig fenomen.
+Sangen er valgt fordi den har en tydelig og repeterende basslinje med lavfrekvent energi, kombinert med rytmiske variasjoner som 
+gjør den egnet til å studere både frekvensinnhold og tidsvariasjon ved bruk av FFT og STFT. Dette gjør prosjektet både faglig 
+relevant og intuitivt å forstå visuelt gjennom spektrogrammer og frekvensanalyser.
 
 \subsubsection{Målsetting}
 % Klargjør hva prosjektet konkret skal oppnå
 % F.eks. å anvende FFT og STFT for å analysere musikalske signaler og visualisere frekvensinnhold
-
+Hovedmålet med prosjektet er å analysere og visualisere frekvensinnholdet i et musikalsk lydsignal ved hjelp av 
+Fourier-transformasjonsmetoder. Prosjektet skal demonstrere hvordan FFT kan brukes til å identifisere dominerende 
+frekvenser i et lydklipp, og hvordan STFT kan gi en mer detaljert fremstilling av hvordan disse frekvensene endrer seg over tid.
+Videre er målsettingen å vise hvordan vindustype, samplingsrate og valg av parametere påvirker nøyaktighet og oppløsning i analysen. 
+Resultatene skal presenteres gjennom grafer og spektrogrammer som illustrerer den teoretiske sammenhengen mellom tid og frekvens.
 
 
 
@@ -32,10 +58,26 @@ for å identifisere de mest dominerende frekvenskomponentene i en sang?}
 % – Sammenligne FFT og STFT for tidsvariasjon
 % – Undersøke hvordan vinduvalg påvirker frekvensoppløsning
 % – Visualisere analysen gjennom Python og spektrogrammer
+For å besvare problemstillingen og oppnå målsettingen er følgende delmål definert:
 
+\begin{itemize}
+\item Implementere og anvende Fast Fourier Transform (FFT) i Python for å identifisere de mest fremtredende frekvenskomponentene i sangen.
+\item Utføre Short-Time Fourier Transform (STFT) for å undersøke hvordan frekvensinnholdet varierer over tid.
+\item Sammenligne resultatene fra FFT og STFT for å vurdere forskjellen mellom global og tidsavhengig frekvensanalyse.
+\item Analysere effekten av ulike vindustyper og parameterinnstillinger på resultatets oppløsning og nøyaktighet.
+\item Visualisere resultatene gjennom spektrogrammer og drøfte hvordan analysen gjenspeiler strukturen og rytmen i musikken.
+\end{itemize}
 
 
 
 \subsection{Hvordan kunstig intelligens er brukt i arbeidet med rapporten}
 % Forklar kort hvordan AI-verktøy har bidratt
 % F.eks. hjelp med tekststruktur eller Python-feilsøking
+I arbeidet med denne oppgaven har det blitt brukt kunstig intelligens som et supplement,
+hovedsakelig som en sparrepartner og hjelpeverktøy. Kunstig intelligens er benyttet som et 
+støtteverktøy, blant annet til feilsøking i Python-kode og som en sparringspartner i arbeidet 
+med kritisk refleksjon og problemløsing. Kunstig intelligens har derfor fungert 
+som et støtteverktøy for å gjøre teksten mer oversiktlig og effektiv å
+presentere. Men den faglige forståelsen, beregningene og drøftingene er selv stått til ansvar for.
+På denne måten har det blitt sikret at oppgaven gjenspeiler egen innsats og kunnskap, samtidig
+som det er brukt verktøyet til å styrke klarheten og kvaliteten på framstillingen.

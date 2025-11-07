@@ -8,25 +8,52 @@
 % Oppsummer de viktigste resultatene fra analysen
 % Nevn hovedfrekvenser, mønstre og eventuelle sammenhenger observert i FFT/STFT
 % Forklar hvordan funnene støtter teorien om Fourier-transformasjonens anvendelse
+Analysen av \textit{Seven Nation Army} viste at de lavfrekvente komponentene mellom 50-120 Hz dominerer lydbildet 
+og representerer sangens karakteristiske basslinje. Gjennom FFT ble grunnfrekvensen identifisert til rundt 55-60 Hz, 
+tilsvarende tonen A, med tydelige harmoniske overtoner ved 110 Hz og 165 Hz. STFT-analysen viste hvordan disse 
+komponentene forblir stabile over tid, mens mellomfrekvensområdet (500-2000 Hz) inneholder rytmiske elementer fra 
+slagverk og gitar.
 
+Resultatene bekrefter at Fourier-transformasjoner effektivt kan dekomponere musikalske signaler i frekvensdomenet og visualisere rytmiske og 
+harmoniske mønstre. Dette samsvarer godt med teorien, der stabile, periodiske signaler gir horisontale bånd i spektrogrammet, 
+mens transiente hendelser fremstår som vertikale strukturer. Funnene underbygger at både FFT og STFT er hensiktsmessige metoder for å 
+studere hvordan energi og struktur fordeler seg i et musikkstykke over tid.
 
 
 \subsection{Vurdering av metode}
 % Evaluer hvor godt metodene (DFT, FFT, STFT) fungerte for formålet
 % Kommenter styrker, begrensninger og nøyaktighet i analysen
 % Kort refleksjon over valg av parametere (vindu, samplingrate osv.)
-
+De anvendte metodene (DFT, FFT og STFT) fungerte tilfredsstillende for formålet. FFT ga en rask og nøyaktig identifikasjon
+av de mest dominerende frekvenskomponentene i hele signalet, mens STFT gjorde det mulig å undersøke hvordan disse frekvensene 
+utviklet seg over tid. Kombinasjonen av metodene ga dermed både høy beregningsmessig effektivitet og tydelig tidsoppløsning.
+Bruken av Hann-vindu viste seg å gi et godt kompromiss mellom tids- og frekvensoppløsning, og reduserte spektrallekkasje. Likevel 
+begrenser STFTs faste vindusstørrelse evnen til å skille tettliggende eller raskt skiftende frekvenser. Metoden er derfor mindre 
+presis ved komplekse signaler med mange samtidige toner.
+Totalt sett vurderes metodene som velvalgte for en enkel og rytmisk låt som \textit{Seven Nation Army}. 
+For videre arbeid kunne alternative tilnærminger som wavelet-transformasjon vurderes for å oppnå bedre tilpasning til signaler med 
+større variasjon i tid og frekvens.
 
 
 
 \subsection{Forbedringsmuligheter og videre arbeid}
-% Foreslå hvordan analysen kan forbedres i fremtidig arbeid
-% F.eks. bruk av Wavelet-transformasjon, høyere oppløsning, lengre datasett eller flere signaler
-% Eventuelt vurder praktiske anvendelser av metoden innen lydanalyse eller kommunikasjon
-
-
-
+Selv om analysen ga et tydelig bilde av de dominerende frekvensene og rytmiske mønstrene 
+i \textit{Seven Nation Army}, finnes det flere tiltak som kan videreutvikle arbeidet. 
+En mulig forbedring er å ta i bruk mer avanserte metoder som Wavelet-transformasjon, 
+som gir variabel oppløsning og dermed bedre egnethet for signaler med raske endringer. 
+Et annet tiltak er å øke tids- og frekvensoppløsningen ved å bruke lengre datasett, 
+flere segmenter og ulike vindustyper for å undersøke effekten på presisjonen. 
+Videre kan fremtidige analyser utvides til å inkludere flere lydsignaler eller komplette musikkstykker 
+for å studere hvordan Fourier-transformasjonen håndterer komplekse, polyfoniske signaler. 
+Metoden kan også anvendes praktisk innen lydredigering, støydemping og musikkanalyse, 
+der frekvensinformasjon brukes til å isolere, filtrere eller gjenkjenne bestemte lydkomponenter.
 
 \subsection{Avsluttende refleksjon}
-% Kort avslutning som binder sammen mål, metode og resultat
-% Fremhev hva prosjektet viser om Fourier-transformasjonens relevans og anvendbarhet
+Prosjektet demonstrerer hvordan Fourier-transformasjonen er et sentralt verktøy for å forstå 
+struktur og dynamikk i musikalske signaler. Gjennom bruk av FFT og STFT ble det mulig å identifisere 
+grunnfrekvensen, observere harmoniske overtoner og følge rytmiske variasjoner over tid. 
+Analysen viser tydelig hvordan matematiske prinsipper kan anvendes til å beskrive et musikalsk fenomen 
+på en presis og målbar måte. Arbeidet fremhever Fourier-transformasjonens relevans både i teoretisk 
+signalbehandling og i praktiske anvendelser som lydanalyse og musikkteknologi, og danner et godt grunnlag 
+for videre utforskning av mer avanserte frekvensanalyseteknikker.
+

@@ -11,11 +11,68 @@
 % Vis det observerte frekvensspekteret og marker de mest fremtredende toppene
 % Kommenter kun hvilke frekvenser som forekommer og deres relative styrke
 % Unngå forklaring av årsaker – det skal gjøres i diskusjonen
+\label{subsec:Spektrumanalyse}
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{figurer/7NA-28s-30fps-100msFFT-22050Hz.png}
+    \label{fig:Amplitudespektrum}
+    \caption{Amplitudespektrum (FFT)}
+\end{figure}
+
+Figuren viser frekvensinnholdet til lydsignalet der hovedenergien er konsentrert i området under 500~Hz. 
+Dette frekvensområdet dekker de laveste tonene i basslinjen, som danner grunnstrukturen i sangen. 
+Grunnfrekvensen ligger rundt 55-60~Hz, tilsvarende tonen~A, som utgjør hovedtemaet i riffet. 
+De neste harmoniske overtonene finnes ved omtrent 110~Hz og 165~Hz. Over 500~Hz avtar amplituden raskt, 
+ettersom høyere frekvenser hovedsakelig stammer fra overtoner og mindre dominerende instrumenter.
+
+Avgrensningen til 500~Hz er valgt fordi dette området inneholder de mest fremtredende komponentene i 
+låten — bassgitar og basstromme. De øvrige instrumentene, som vokal og cymbaler, ligger hovedsakelig i 
+mellomtone- og høyfrekvensområdet (fra omtrent 500 til 5000~Hz), men har lavere relativ energi i forhold til basspartiet. 
+Fokuset på de lave frekvensene gjør det mulig å identifisere grunnfrekvensen og de første overtonene tydelig 
+uten at signalet forstyrres av høyfrekvente detaljer.
 
 \subsubsection{Harmoniske komponenter}
 % Identifiser grunnfrekvens og overtoner i spekteret
 % Angi målte verdier i Hz og sammenlign med teoretiske frekvenser uten å vurdere avvik
 % Eventuelt bruk tabell for å liste grunnfrekvens + 2–3 harmoniske overtoner
+
+\begin{table}[H]
+    \centering
+    \caption{Frekvenstabell for musikalske toner oppgitt i hertz [Hz] \parencite{seventhstring_notefrequencies}}
+    \vspace{0.5ex}
+    \label{tab:frekvenstabell}
+    \resizebox{\linewidth}{!}{%
+    \rowcolors{2}{white}{black!7}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Oktav} & \textbf{C} & \textbf{C\#} & \textbf{D} & \textbf{Eb} & \textbf{E} & 
+        \textbf{F} & \textbf{F\#} & \textbf{G} & \textbf{G\#} & \textbf{A} & \textbf{Bb} & \textbf{B} \\ \hline
+        \textbf{0} & 16.35 & 17.32 & 18.35 & 19.45 & 20.60 & 21.83 & 23.12 & 24.50 & 25.96 & 27.50 & 29.14 & 30.87 \\ \hline
+        \textbf{1} & 32.70 & 34.65 & 36.71 & 38.89 & 41.20 & 43.65 & 46.25 & 49.00 & 51.91 & 55.00 & 58.27 & 61.74 \\ \hline
+        \textbf{2} & 65.41 & 69.30 & 73.42 & 77.78 & 82.41 & 87.31 & 92.50 & 98.00 & 103.8 & 110.0 & 116.5 & 123.5 \\ \hline
+        \textbf{3} & 130.8 & 138.6 & 146.8 & 155.6 & 164.8 & 174.6 & 185.0 & 196.0 & 207.7 & 220.0 & 233.1 & 246.9 \\ \hline
+        \textbf{4} & 261.6 & 277.2 & 293.7 & 311.1 & 329.6 & 349.2 & 370.0 & 392.0 & 415.3 & 440.0 & 466.2 & 493.9 \\ \hline
+        \textbf{5} & 523.3 & 554.4 & 587.3   & 622.3 & 659.3 & 698.5 & 740.0 & 784.0 & 830.6 & 880.0 & 932.3 & 987.8 \\ \hline
+        \textbf{6} & 1047 & 1109 & 1175 & 1245 & 1319 & 1397 & 1480 & 1568 & 1661 & 1760 & 1865 & 1976 \\ \hline
+        \textbf{7} & 2093 & 2217 & 2349 & 2489 & 2637 & 2794 & 2960 & 3136 & 3322 & 3520 & 3729 & 3951 \\ \hline
+        \textbf{8} & 4186 & 4435 & 4699 & 4978 & 5274 & 5588 & 5920 & 6272 & 6645 & 7040 & 7459 & 7902 \\ \hline
+    \end{tabular}%
+    }
+\end{table}
+
+Tabellen ovenfor viser de teoretiske frekvensene for musikalske toner i ulike oktaver. 
+Denne tabellen brukes som referanse for å identifisere hvilke noter som korresponderer med 
+de frekvensene som ble observert i amplitudespekteret fra analysen i kapittel \ref{subsec:Spektrumanalyse}. 
+Ved å sammenligne de målte frekvensene fra FFT-resultatet med verdiene i tabellen, kan en 
+slå fast at hovedfrekvensen på omtrent 55--60~Hz tilsvarer tonen A1. De påfølgende 
+harmoniske overtonene ved 110~Hz og 165~Hz tilsvarer henholdsvis A2 og E3. 
+Dette bekrefter at de observerte frekvenskomponentene følger den forventede harmoniske 
+rekken til basslinjen i \textit{Seven Nation Army}. Tabellen fungerer derfor som en teoretisk 
+referanse som knytter frekvensanalysen til musikalske noter og viser hvordan Fourier-transformasjonen 
+kan brukes til å identifisere tonehøyder og harmoniske strukturer i lydsignalet.
+
+
+
 
 \subsubsection{Amplitude og energifordeling}
 % Presenter hvordan signalenergien er fordelt mellom ulike frekvensbånd
@@ -23,18 +80,61 @@
 % Beskriv observasjonene nøytralt uten å forklare årsaker
 
 
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{figurer/7NA-28s-30fps-100msFFT-5000Hz.png}
+    \label{fig:Amplitudespektrum5000Hz}
+    \caption{Amplitudespektrum (FFT)}
+\end{figure}
 
+Figur (\ref{fig:Amplitudespektrum5000Hz}) viser et mindre utdrag av den samme fouriertransformasjonen fra figur
+(\ref{fig:Amplitudespektrum}), bare at x-aksen er kuttet på $5000Hz$. Formelen for energien til en gitt frekvens
+$f$ i signal $S$, blir da $E_s = |S(f)|^2$. Det betyr at energien for signalet kan tydes fra amplitudegrafen. 
+Frekvensene som har mest energi i signalet ligger mellom $0Hz$ og $200Hz$. Dette er frekvensområdet bassgitarer
+spiller på, samt basstrommer i tillegg. Rundt $700Hz$ er det og en topp, dette tilsvarer vokal og noen symbaler. 
+Alt over $2000Hz$ er hovedsaklig symbaler og overtoner fra instumentene som er med.  
 
 \subsection{STFT-resultater}
 % Resultater fra tids-frekvensanalyse (spektrogram)
 % Forklar kort hvilke parametere som ble brukt (vindutype, størrelse, overlapp)
 
 \subsubsection{Spektrogram}
-% Vis spektrogrammet som figur med akser for tid og frekvens
-% Beskriv de tydelige mønstrene og hvor i tidsaksen de opptrer
-% Eksempel: «Tydelige bånd observeres mellom 50–110 Hz gjennom hele klippet»
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{figurer/Seven Nation Army Spektogram.png}
+    \label{fig:spektogram1}
+    \caption{Spektogram}
+\end{figure}
+
+Figur \ref{fig:spektogram1} viser spektrogrammet til \textit{Seven Nation Army}. Figuren illustrerer 
+hvordan signalets frekvensinnhold varierer over tid.
+De tydeligste strukturene i spektrogrammet er de horisontale 
+båndene mellom 50-120 Hz, som viser den dominerende basslinjen gjennom hele opptaket. 
+Dette området har høyest energi og forblir stabilt over tid.
+
+Mellom 500-2000 Hz vises gjentatte vertikale mønstre som sammenfaller med slagverk og rytmiske elementer. 
+Disse opptrer jevnlig og skaper et tydelig pulserende mønster i spektrogrammet.
+De høyere frekvensene, over omtrent 4000 Hz, har lavere intensitet og forekommer mer sporadisk. 
+Disse delene kan knyttes til vokale innslag og overtoner fra instrumentene.
+
+Resultatet viser at energien i signalet i hovedsak ligger i de lavere frekvensområdene, 
+mens de høyere frekvensene bidrar med detaljer og tekstur. Dette stemmer godt med den karakteristiske 
+lydbalansen i låten, der bass og rytme dominerer lydbildet.
 
 \subsubsection{Tidsvariasjon og rytmikk}
+
+Spektrogrammet viser tydelige variasjoner i intensitet og mønster over tid, 
+som gjenspeiler låtens rytmiske struktur. De vertikale linjene som repeteres 
+jevnlig i mellomfrekvensområdet (500-2000 Hz) markerer slag og perkusjon, 
+og opptrer med jevne intervaller gjennom hele opptaket. Dette gir et stabilt 
+og gjenkjennelig rytmisk mønster.
+
+I starten av opptaket er energien konsentrert i de lavere frekvensene, mens 
+de rytmiske slagene blir tydeligere etter hvert som flere instrumenter introduseres. 
+Mot midten av spektrogrammet øker tettheten av vertikale mønstre, noe som indikerer 
+høyere rytmisk aktivitet og mer komplekse lydbilder.
+
+Mot slutten reduseres energien gradvis, og mønstrene blir mindre markerte. 
+Dette viser en tydelig dynamisk utvikling i signalet over tid, der intensiteten 
+og rytmikken følger sangens struktur.
 % Kommenter hvordan spektrogrammet viser variasjoner i tid og rytmiske elementer
 % Beskriv observerte mønstre, f.eks. endringer i amplitude eller hyppighet av slag
 % Ikke forklar hvorfor variasjonene oppstår – det tas opp i diskusjon.tex
